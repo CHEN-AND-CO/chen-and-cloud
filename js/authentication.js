@@ -35,4 +35,4 @@ function validateLogin(event) {
     xhr.send();
 }
 
-//ajaxRequest('GET', 'php/request.php/photos/', () => { });
+ajaxRequest('GET', 'php/request.php/photos/', () => { });
