@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+  <title> Chen &amp; Cloud </title>
+
+  <meta charset="UTF-8">
+  <meta name="author" content="SSOS Chen&amp;Co" />
+
+  <!-- Appel des feuilles de style -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/global.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+  <!-- Header de la page -->
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+      <img class="circle" src="img/chen.png" />
+      <big class="navbar-brand"> Chen&amp;Co </big>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Homepage
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Affichage des erreurs -->
+  <div id=" errors " class="container ">
+  </div>
+
+  <!-- Affichage des informations -->
+  <div id="infos " class="container ">
+  </div>
+
+  <!-- Gestion de l'Authentification -->
+  <div id="authentication" class="container" style="display: none">
+    <h2>Authentification</h2>
+    <form>
+      <div class="input-group">
+        <span class="input-group-addon">Login</span>
+        <input type="text" class="form-control" id="login" placeholder="Entrez votre login" autofocus>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Mot de passe</span>
+        <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" required>
+      </div>
+      </br>
+      <button type="submit" class="btn btn-success pull-right" id="authentication-send">
+        <span class="glyphicon glyphicon-ok"></span> Envoyer
+      </button>
+    </form>
+  </div>
+
+  <!-- Footer de la page -->
+  <footer class="footer ">
+    <div class="container ">
+      <span> Chen&amp;Co ©</span>
+    </div>
+  </footer>
+
+  <!-- Appel des Scripts -->
+  <script src="js/jquery-3.3.1.js "></script>
+  <script src="js/js.cookie.js "></script>
+  <script src="js/bootstrap.min.js "></script>
+  <script src="js/ajax.js "></script>
+  <script src="js/authentication.js "></script>
+</body>
+
+</html>
