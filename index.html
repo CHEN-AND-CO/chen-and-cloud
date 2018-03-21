@@ -3,41 +3,29 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Gallerie de photos géniales</title>
+    <title>Gallllerie de photos géniales</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/fonts/fonts.css">
 </head>
 
 <body>
     <header>
         <h1 class="main-title">Gallery</h1>
+        <button id="connect-menu" class="btn-submit">Connection</button>
     </header>
 
     <section>
-        <!-- Affichage des erreurs -->
-        <div id="errors" class="container ">
-        </div>
-
-        <!-- Affichage des informations -->
-        <div id="infos " class="container ">
-        </div>
-
         <!-- Gestion de l'Authentification -->
-        <div id="authentication" class="container" style="display: none">
+        <div id="authentication" class="popup">
             <h2>Authentification</h2>
-            <form>
-                <div class="input-group">
-                    <span class="input-group-addon">Login</span>
-                    <input type="text" class="form-control" id="login" placeholder="Entrez votre login" autofocus>
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon">Mot de passe</span>
-                    <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" required>
-                </div>
-                <br>
-                <button type="submit" class="btn btn-success pull-right" id="authentication-send">
-                    <span class="glyphicon glyphicon-ok"></span> Envoyer
+            <form class="login">
+                <input type="text" id="login" placeholder="Entrez votre login" autofocus required>
+                <input type="password" id="password" placeholder="Entrez votre mot de passe" required>
+        
+                <button type="submit" class="btn-submit" id="authentication-send">
+                     Se connecter
                 </button>
             </form>
         </div>
@@ -91,6 +79,7 @@
     <script src="js/ajax.js "></script>
     <script src="js/authentication.js "></script>
     <script src="js/loading.js"> </script>
+    <script src="js/chat.js"></script>
 </body>
 
 </html>

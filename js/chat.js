@@ -1,5 +1,5 @@
 const websocket = new WebSocket('ws://' + window.location.hostname + ':12345');
-const login = "STALINE";
+const login = '#' + Math.floor(Math.random() * 424242).toString(16);
 
 const spamString = "CHEN & CO";
 var toggleSpam;
