@@ -4,7 +4,8 @@ const WS = require('ws');
 const websocket = new WS.Server( {
     port: 12345
 });
-console.log('Server is listening on port ' + websocket.port);
+
+console.log('Server is listening on port 12345');
 
 websocket.on('connection', (client) => {
     //New client
@@ -13,12 +14,11 @@ websocket.on('connection', (client) => {
 
     client.on('message', (data) => {
         //Broadcast to all
-        for ( let client in websocket.clients )
-        {
-            client.send(data);
-        }
-        //Send the message back to the sender
-        client.send(data);
+        websocket.clients.forEach( (client) => {
+
+            if ( client.readyState = WS.OPEN )
+                client.send(data);
+        });
 
         console.log(data);
     });
