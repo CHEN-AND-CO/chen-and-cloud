@@ -26,6 +26,7 @@ function validateLogin(event) {
                 Cookies.set('token', xhr.responseText);
                 $("#authentication").hide();
                 $('#infos').html('Authentification OK');
+                alert('Authentification OK');
                 break;
             default:
                 httpErrors(xhr.status);

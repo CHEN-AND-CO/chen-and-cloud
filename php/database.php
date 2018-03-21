@@ -185,8 +185,8 @@
   {
     try
     {
-      $statement = $db->query = 'select * from users where login='.$login.' and
-        password=sha1('.$password.')';
+      $statement = $db->query("select * from users where login='$login' and
+        password=sha1('$password')");
       $result = $statement->fetch();
     }
     catch (PDOException $exception)
@@ -198,6 +198,7 @@
       return false;
     return true;
   }
+
 
   //----------------------------------------------------------------------------
   //--- dbCheckUser ------------------------------------------------------------
