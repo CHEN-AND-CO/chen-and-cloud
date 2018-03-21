@@ -26,6 +26,8 @@ function validateLogin(event) {
                 Cookies.set('token', xhr.responseText);
                 $("#authentication").hide();
                 $('#infos').html('Authentification OK');
+                $('#connect-menu').html(login);
+                
                 alert('Authentification OK');
                 break;
             default:
@@ -35,5 +37,9 @@ function validateLogin(event) {
 
     xhr.send();
 }
+
+$('#connect-menu').click( (event) => {
+    $('#authentication').toggle();
+});
 
 ajaxRequest('GET', 'php/request.php/photos/', () => { });

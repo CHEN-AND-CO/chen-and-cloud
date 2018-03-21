@@ -26,7 +26,9 @@ body
     padding-top: 7vh;
 
     font-family: "Open Sans", Verdana, Arial, serif;
+
     color: white;
+    background-color: var(--bkcol);
 }
 
 header
@@ -37,8 +39,25 @@ header
     width: 100%;
     height: 10vh;
 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
     background-color: var(--headcol);
     box-shadow: 0 0 10px rgb(24, 24, 24);
+}
+
+header > button
+{
+    font-weight: bold;
+
+    margin-right: 2em;
+    
+    color: white;
+    background-color: transparent;
+    border: none;
+
+    cursor: pointer;
 }
 
 h1
@@ -87,7 +106,7 @@ h1::before
 
 h1, h2, h3, h4, h5, h6
 {
-    font-family: "Bree Serif";
+    font-family: "ZillaSlab", "Bree Serif";
     font-weight: normal;
 }
 
@@ -113,6 +132,8 @@ section
 {
     width: 75%;
     margin-top: 2em;
+
+    background-color: inherit;
 }
 
 footer
@@ -153,6 +174,16 @@ aside
 
     background-color: rgb(87, 87, 87);;
     border-left: solid 3px var(--headcol);
+}
+
+#authentication
+{
+    display: none;
+}
+
+#chat *, #chat ::after, #chat ::before
+{
+    box-sizing: content-box;
 }
 
 #chat h2
@@ -199,7 +230,7 @@ form input
     transition: border 0.6s, background-color 1s;
 }
 
-form input:focus
+#chat form input:focus
 {
     border-top-color: rgb(181, 190, 192);
     background-color: rgb(233, 230, 193);
@@ -256,6 +287,85 @@ form input:focus
 .thumbnail
 {
     width: 8em;
+}
+
+.popup
+{
+    position: absolute;
+    z-index: 999;
+
+    padding: 1.5em;
+
+    color: var(--bkcol);
+    background-color: rgba(255, 255, 255, 0.651);
+    box-shadow: 0 0 20px black
+}
+
+.popup#authentication
+{
+    right: 1%;
+}
+
+.login
+{
+    /*width: 30%;*/
+    /*height: 6em;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-width: 25vw;
+
+    font-size: 0.9em;    
+}
+
+.login input
+{
+    padding: 0.5em;
+    margin-bottom: 1em;
+
+    border: solid 1px gray;
+    border-radius: 5px;
+}
+
+
+.login button
+{
+    margin-top: 1em;
+    padding: 0.5em;
+
+    text-transform: uppercase;
+    font-weight: bold;
+
+    color: white;
+    background-color: rgb(34, 95, 34);
+
+    border-radius: 8px;
+    border: none;
+
+    transform: scale(1);
+
+    transition: transform 0.3s;
+}
+
+.login button:hover
+{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.popup h2
+{
+    width: 100%;
+    
+    font-size: 1.6em;
+    text-align: center;
+
+    color: rgb(49, 49, 49);
+
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 0.5em;
 }
 
 @font-face
