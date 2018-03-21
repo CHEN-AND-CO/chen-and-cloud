@@ -15,32 +15,41 @@
     </header>
 
     <section>
+        <!-- Affichage des erreurs -->
+        <div id="errors" class="container ">
+        </div>
+
+        <!-- Affichage des informations -->
+        <div id="infos " class="container ">
+        </div>
+
+        <!-- Gestion de l'Authentification -->
+        <div id="authentication" class="container" style="display: none">
+            <h2>Authentification</h2>
+            <form>
+                <div class="input-group">
+                    <span class="input-group-addon">Login</span>
+                    <input type="text" class="form-control" id="login" placeholder="Entrez votre login" autofocus>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Mot de passe</span>
+                    <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" required>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success pull-right" id="authentication-send">
+                    <span class="glyphicon glyphicon-ok"></span> Envoyer
+                </button>
+            </form>
+        </div>
+
         <article id="main-gallery">
-            <!-- Affichage des erreurs -->
-            <div id="errors" class="container ">
-            </div>
-
-            <!-- Affichage des informations -->
-            <div id="infos " class="container ">
-            </div>
-
-            <!-- Gestion de l'Authentification -->
-            <div id="authentication" class="container" style="display: none">
-                <h2>Authentification</h2>
-                <form>
-                    <div class="input-group">
-                        <span class="input-group-addon">Login</span>
-                        <input type="text" class="form-control" id="login" placeholder="Entrez votre login" autofocus>
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="thumbnails">
                     </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">Mot de passe</span>
-                        <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" required>
+                    <div id="photo">
                     </div>
-                    <br>
-                    <button type="submit" class="btn btn-success pull-right" id="authentication-send">
-                        <span class="glyphicon glyphicon-ok"></span> Envoyer
-                    </button>
-                </form>
+                </div>
             </div>
         </article>
 
@@ -81,6 +90,7 @@
     <script src="js/bootstrap.min.js "></script>
     <script src="js/ajax.js "></script>
     <script src="js/authentication.js "></script>
+    <script src="js/loading.js"> </script>
 </body>
 
 </html>
