@@ -74,12 +74,11 @@
             $output = dbDeleteComment($db, intval($id), intval($id));
         }
     }else if($requestRessource == 'authenticate'){
-      authenticate($db);
+        authenticate($db);
+        $login = verifyToken($db);
     }else{
         header('HTTP/1.1 400 Bad Request');
     }
-
-    $login = verifyToken($db);
 
     exit;
 ?>
