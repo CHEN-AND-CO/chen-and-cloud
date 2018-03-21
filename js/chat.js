@@ -1,4 +1,4 @@
-const websocket = new WebSocket('ws://172.17.5.64:12345');
+const websocket = new WebSocket('ws://' + window.location.hostname + ':12345');
 const login = "STALINE";
 
 const spamString = "CHEN & CO";

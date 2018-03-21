@@ -17,6 +17,8 @@ websocket.on('connection', (client) => {
         {
             client.send(data);
         }
+        //Send the message back to the sender
+        client.send(data);
 
         console.log(data);
     });
