@@ -6,12 +6,40 @@
     <title>Gallerie de photos géniales</title>
 
     <link rel="stylesheet" href="css/main.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
     <header>
         <h1 class="main-title">Gallery</h1>
     </header>
+
+    <!-- Affichage des erreurs -->
+    <div id=" errors " class="container ">
+    </div>
+
+    <!-- Affichage des informations -->
+    <div id="infos " class="container ">
+    </div>
+
+    <!-- Gestion de l'Authentification -->
+    <div id="authentication" class="container" style="display: none">
+        <h2>Authentification</h2>
+        <form>
+            <div class="input-group">
+                <span class="input-group-addon">Login</span>
+                <input type="text" class="form-control" id="login" placeholder="Entrez votre login" autofocus>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">Mot de passe</span>
+                <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" required>
+            </div>
+            </br>
+            <button type="submit" class="btn btn-success pull-right" id="authentication-send">
+                <span class="glyphicon glyphicon-ok"></span> Envoyer
+            </button>
+        </form>
+    </div>
 
     <section>
         <article id="main-gallery">
@@ -49,9 +77,12 @@
         <span>© Service Spécial des Opérations Spéciales, 2018 - CHEN &amp; CO ®</span>
     </footer>
 
-    <script src="js/jquery-3.3.1.js" charset="utf-8"></script>
-    <script src="js/ajax.js" charset="utf-8"></script>
-    <script src="js/chat.js" charset="utf-8"></script>
+    <!-- Appel des Scripts -->
+    <script src="js/jquery-3.3.1.js "></script>
+    <script src="js/js.cookie.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/ajax.js "></script>
+    <script src="js/authentication.js "></script>
 </body>
 
 </html>
