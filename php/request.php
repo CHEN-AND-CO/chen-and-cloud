@@ -1,8 +1,19 @@
 <?php
+/**
+ * @Author: Thibault Napoléon <Imothep>
+ * @Company: ISEN Yncréa Ouest
+ * @Email: thibault.napoleon@isen-ouest.yncrea.fr
+ * @Created Date: 29-Jan-2018 - 16:48:46
+ * @Last Modified: 29-Jan-2018 - 21:46:02
+ */
+
     require_once('database.php');
 
     function sendJsonData($message, $h){
         header($h);
+        header('Content-Type: text/plain; charset=utf-8');
+        header('Cache-control: no-store, no-cache, must-revalidate');
+        header('Pragma: no-cache');
 
         echo json_encode($message);
     }
@@ -38,46 +49,28 @@
         return $login;
     }
 
+    // Database connexion.
     $db = dbConnect();
-    if (!$db)
-    {
-      header ('HTTP/1.1 503 Service Unavailable');
-      exit;
+    if (!$db){
+        header ('HTTP/1.1 503 Service Unavailable');
+        exit;
     }
-  
+
+    // Check the request.
     $requestType = $_SERVER['REQUEST_METHOD'];
     $request = substr($_SERVER['PATH_INFO'], 1);
     $request = explode('/', $request);
     $requestRessource = array_shift($request);
-    
-    if ($id == ''){
-        $id = NULL;
-        $data = false;
-    }
 
     if ($requestRessource == 'photos'){
-        if($id == NULL){
-            $output = dbRequestPhotos($db);
-        }else{
-            $output = dbRequestPhoto($db, intval($id));
-        }
-
-        if($output != false){
-            sendJsonData($output, 'HTTP/1.1 200 OK');
-        }
-    }else if($requestRessource == 'comments'){
-        if($requestType == 'GET'){
-            $output = dbRequestComments($db, intval($id));
-        }else if($requestType == 'POST'){
-            $output = dbAddComment($db, intval($id), intval($id), $_POST('comment'));
-        }else if($requestType == 'DELETE'){
-            $output = dbDeleteComment($db, intval($id), intval($id));
-        }
+        $data = dbRequestPhotos($db);
     }else if($requestRessource == 'authenticate'){
         authenticate($db);
     }
 
     $login = verifyToken($db);
+
+    sendJsonData($data, 'HTTP/1.1 200 OK');
 
     exit;
 ?>
