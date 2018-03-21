@@ -1,0 +1,19 @@
+{
+  "name": "websocket-chat-server",
+  "version": "0.1.0",
+  "description": "A simple websocket chat server running in NodeJS",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "chat",
+    "websocket"
+  ],
+  "author": "HerrCrazi",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "ws": "^5.1.0"
+  }
+}
