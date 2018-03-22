@@ -9,7 +9,6 @@ function validateLogin(event) {
     var login, password, text, xhr;
 
     event.preventDefault();
-    event.stopPropagation();
 
     login = $('#login').val();
     password = $('#password').val();
