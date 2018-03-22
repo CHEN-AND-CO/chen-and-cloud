@@ -20,15 +20,18 @@
         <!-- Gestion de l'Authentification -->
         <div id="authentication" class="popup">
             <h2>Authentification</h2>
-            <form class="login">
+            <form action="#" class="login">
                 <input type="text" id="login" placeholder="Entrez votre login" autofocus required>
                 <input type="password" id="password" placeholder="Entrez votre mot de passe" required>
         
-                <button type="submit" class="btn-submit" id="authentication-send">
+                <button class="" id="authentication-send">
                      Se connecter
                 </button>
             </form>
         </div>
+
+        <div id="infos"></div>
+        <div id="errors"></div>
 
         <article id="main-gallery">
             <div class="row">
@@ -75,7 +78,7 @@
     <!-- Appel des Scripts -->
     <script src="js/jquery-3.3.1.js "></script>
     <script src="js/js.cookie.js "></script>
-    <script src="js/bootstrap.min.js "></script>
+    <!--script src="js/bootstrap.min.js "></script-->
     <script src="js/ajax.js "></script>
     <script src="js/authentication.js "></script>
     <script src="js/loading.js"> </script>

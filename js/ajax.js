@@ -29,6 +29,8 @@ function ajaxRequest(type, request, callback, data = null) {
 
   // Add the onload function.
   xhr.onload = function () {
+    console.log(xhr.status);
+    
     switch (xhr.status) {
       case 200:
       case 201:

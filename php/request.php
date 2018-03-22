@@ -49,9 +49,13 @@
         return $login;
     }
 
+
+
+
     // Database connexion.
     $db = dbConnect();
-    if (!$db){
+    if (!$db)
+    {
         header ('HTTP/1.1 503 Service Unavailable');
         exit;
     }
@@ -63,27 +67,44 @@
     $requestRessource = array_shift($request);
     if ($id == '') $id = NULL;
 
-    if ($requestRessource == 'photos'){
-        if($id == NULL){
+
+    if ($requestRessource == 'photos')
+    {
+        if($id == NULL)
+        {
             $output = dbRequestPhotos($db);
-        }else{
+        }
+        else
+        {
             $output = dbRequestPhoto($db, intval($id));
         }
 
         if($output != false){
             sendJsonData($output, 'HTTP/1.1 200 OK');
         }
-    }else if($requestRessource == 'authenticate'){
+
+    }
+    else if($requestRessource == 'authenticate')
+    {
         authenticate($db);
-    }else if($requestRessource == 'comments'){
-        if($requestType == 'GET'){
+    }
+    else if($requestRessource == 'comments')
+    {
+        if($requestType == 'GET')
+        {
             $output = dbRequestComments($db, intval($id));
-        }else if($requestType == 'POST'){
+        }
+        else if($requestType == 'POST')
+        {
             $output = dbAddComment($db, intval($id), intval($id), $_POST('comment'));
-        }else if($requestType == 'DELETE'){
+        }
+        else if($requestType == 'DELETE')
+        {
             $output = dbDeleteComment($db, intval($id), intval($id));
         }
-    }else{
+    }
+    else
+    {
         header('HTTP/1.1 400 Bad Request');
 
         exit;
@@ -91,7 +112,7 @@
 
     $login = verifyToken($db);
 
-    sendJsonData($data, 'HTTP/1.1 200 OK');
+    //sendJsonData($data, 'HTTP/1.1 200 OK');
 
     exit;
 ?>

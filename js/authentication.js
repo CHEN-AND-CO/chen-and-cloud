@@ -1,6 +1,6 @@
 'use strict';
 
-function authentication() {
+function authentication() {    
     $('#authentication-send').off('click').click(validateLogin);
     $("#authentication").show();
 }
@@ -9,6 +9,8 @@ function validateLogin(event) {
     var login, password, text, xhr;
 
     event.preventDefault();
+    console.log("auth request");
+    
 
     login = $('#login').val();
     password = $('#password').val();
@@ -39,6 +41,7 @@ function validateLogin(event) {
 }
 
 $('#connect-menu').click( (event) => {
+    $('#authentication-send').off('click').click(validateLogin);
     $('#authentication').toggle();
 });
 
