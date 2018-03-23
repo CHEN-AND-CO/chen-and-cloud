@@ -65,6 +65,7 @@
     $request = substr($_SERVER['PATH_INFO'], 1);
     $request = explode('/', $request);
     $requestRessource = array_shift($request);
+    $id = array_shift($request);
     if ($id == '') $id = NULL;
 
 
