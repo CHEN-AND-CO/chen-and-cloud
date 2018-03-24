@@ -1,5 +1,5 @@
 const websocket = new WebSocket('ws://' + window.location.hostname + ':12345');
-const login = '#' + Math.floor(Math.random() * 424242).toString(16);
+var login = '#' + Math.floor(Math.random() * 424242).toString(16);
 
 const spamString = "CHEN & CO";
 var toggleSpam;
@@ -24,6 +24,18 @@ websocket.onmessage = (event) => {
 
 
 $(() => {
+    ajaxRequest('GET', 'php/request.php/checkToken', (res) => {       
+        var username = Cookies.get('login');
+
+        if ( username === 'cir2' )
+        {
+            login = username + login;
+        } else {
+            login = username;
+        }
+
+        console.log('Connected : ' + username);
+    });
 
     $('#chat-input').submit((ev) => {
         let msg = $('#chat-input input').val();

@@ -44,5 +44,3 @@ $('#connect-menu').click( (event) => {
     $('#authentication-send').off('click').click(validateLogin);
     $('#authentication').toggle();
 });
-
-ajaxRequest('GET', 'php/request.php/photos/', () => { });

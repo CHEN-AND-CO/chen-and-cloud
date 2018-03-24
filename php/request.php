@@ -89,6 +89,10 @@
     {
         authenticate($db);
     }
+    else if ($requestRessource == 'checkToken')
+    {
+        if (verifyToken($db)) header('HTTP/1.1 200 OK');
+    }
     else if($requestRessource == 'comments')
     {
         if($requestType == 'GET')
