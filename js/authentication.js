@@ -30,10 +30,38 @@ function validateLogin(event) {
                 $('#infos').html('Authentification OK');
                 $('#connect-menu').html(login);
                 
+                chat_changeUsername(login);
+
                 alert('Authentification OK');
                 break;
             default:
                 httpErrors(xhr.status);
+        }
+    };
+
+    xhr.send();
+}
+
+function checkAuth(callback)
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'php/request.php/checkToken', true);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('token'));
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function ()
+    {
+        console.log(xhr.status);
+        
+        switch (xhr.status)
+        {
+            case 200:
+                callback(true);
+                break;
+
+            default:
+                httpErrors(xhr.status);
+                callback(false);
         }
     };
 

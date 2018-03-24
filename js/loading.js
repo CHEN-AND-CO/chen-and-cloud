@@ -1,7 +1,5 @@
 'use strict';
 
-ajaxRequest('GET', 'php/request.php/photos/', loadPhotos);
-
 function loadPhotos(ajaxResponse) {
     var photos = JSON.parse(ajaxResponse);
 

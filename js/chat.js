@@ -1,41 +1,33 @@
-const websocket = new WebSocket('ws://' + window.location.hostname + ':12345');
-var login = '#' + Math.floor(Math.random() * 424242).toString(16);
+var username = ('#' + Math.floor(Math.random() * 999999).toString(16));
+var websocket;
 
-const spamString = "CHEN & CO";
-var toggleSpam;
-var spammer;
+function initChat(login)
+{
+    websocket = new WebSocket('ws://' + window.location.hostname + ':12345');
+    //var username = '#' + Math.floor(Math.random() * 424242).toString(16);
 
-websocket.onopen = () => {
-    console.log("Websocket connected.");
-    websocket.send(login + " s'est connecté");
-};
-
-websocket.onerror = function (er) {
-    console.error("Unable to open websocket connection on " + websocket.url);
-}
-
-websocket.onmessage = (event) => {
-    $('#chat ul.msg-list').append('<li class="message">' + event.data + '</li>');
-
-    $("#chat ul.msg-list").finish();
-    $("#chat ul.msg-list").animate({ scrollTop: $('#chat ul.msg-list').prop("scrollHeight") }, 1000);
-};
+    username = login;
+    var spamString = "CHEN & CO";
+    var toggleSpam = false;
+    var spammer;
 
 
+    websocket.onopen = () => {
+        console.log("Websocket connected.");
+        websocket.send(username + " s'est connecté");
+    };
 
-$(() => {
-    ajaxRequest('GET', 'php/request.php/checkToken', (res) => {       
-        var username = Cookies.get('login');
+    websocket.onerror = function (er) {
+        console.error("Unable to open websocket connection on " + websocket.url);
+    }
 
-        if ( username === 'cir2' )
-        {
-            login = username + login;
-        } else {
-            login = username;
-        }
+    websocket.onmessage = (event) => {
+        $('#chat ul.msg-list').append('<li class="message">' + event.data + '</li>');
 
-        console.log('Connected : ' + username);
-    });
+        $("#chat ul.msg-list").finish();
+        $("#chat ul.msg-list").animate({ scrollTop: $('#chat ul.msg-list').prop("scrollHeight") }, 1000);
+    };
+
 
     $('#chat-input').submit((ev) => {
         let msg = $('#chat-input input').val();
@@ -43,7 +35,7 @@ $(() => {
 
         ev.preventDefault();
 
-        websocket.send(login + ' : ' + msg);
+        websocket.send(username + ' : ' + msg);
 
         $('#chat-input input').val('');
     });
@@ -66,5 +58,13 @@ $(() => {
             clearInterval(spammer);
         }
     });
+}
 
-});
+function chat_changeUsername(newUsername)
+{
+    if ( websocket.readyState === WebSocket.OPEN )
+    {
+        websocket.send(username + ' -> ' + newUsername);
+        username = newUsername;
+    }
+}
