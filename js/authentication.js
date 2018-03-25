@@ -31,8 +31,6 @@ function validateLogin(event) {
                 $('#connect-menu').html(login);
                 
                 chat_changeUsername(login);
-
-                alert('Authentification OK');
                 break;
             default:
                 httpErrors(xhr.status);
@@ -71,4 +69,6 @@ function checkAuth(callback)
 $('#connect-menu').click( (event) => {
     $('#authentication-send').off('click').click(validateLogin);
     $('#authentication').toggle();
+    console.log('click');
+    
 });

@@ -5,8 +5,8 @@ function loadPhotos(ajaxResponse) {
 
     for (const i in photos) {
         var balise = document.createElement('div');
-        balise.className = 'col-xs-2 col-md-2';
-        balise.innerHTML = '<a href="#" class="thumbnail"><img src="' + photos[i].src + '" id="photo-' + photos[i].id + '"></a>';
+        //balise.className = 'thumbnail';
+        balise.innerHTML = '<a href="#"><img class="thumbnail" src="' + photos[i].src + '" id="photo-' + photos[i].id + '"></a>';
         $('#thumbnails').append(balise);
 
         $('#photo-' + photos[i].id).unbind('click').click(
@@ -21,18 +21,20 @@ function loadPhotos(ajaxResponse) {
 
 function loadPhoto(ajaxResponse) {
     var photo = JSON.parse(ajaxResponse);
-    var balise = '<div class="panel panel-default"><div class="panel-body">';
-    balise += '<h2>' + photo[0].title + '</h2>';
-    balise += '<div class="row"><div class="col-xs-12 col-md-12">';
-    balise += '<a href="#" class="thumbnail"><img src="' + photo[0].src + '">';
-    balise += '</a></div></div></div></div>';
+    var balise;
+    //balise += '<div class="panel panel-default"><div class="panel-body">';
+    balise = '<h2>' + photo[0].title + '</h2>';
+    //balise += '<div class="row"><div class="col-xs-12 col-md-12">';
+    balise += '<a href="#" class="thumbnail"><img src="' + photo[0].src + '"></a>';
+    //balise += '</div></div></div></div>';
     $('#photo').html(balise);
     $('#photo').attr('photoid', photo[0].id);
 }
 
 function loadComments(ajaxResponse) {
     var comments = JSON.parse(ajaxResponse);
-
+    console.log(comments);
+    
     $('#comments').html("");
     for (const i in comments) {
         var balise = document.createElement('div');
