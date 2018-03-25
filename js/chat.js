@@ -6,7 +6,7 @@ function initChat(login)
     websocket = new WebSocket('ws://' + window.location.hostname + ':12345');
     //var username = '#' + Math.floor(Math.random() * 424242).toString(16);
 
-    username = login;
+    if ( login != undefined ) username = login;
     var spamString = "CHEN & CO";
     var toggleSpam = false;
     var spammer;
@@ -19,6 +19,7 @@ function initChat(login)
 
     websocket.onerror = function (er) {
         console.error("Unable to open websocket connection on " + websocket.url);
+        $('#chat ul.msg-list').html('<div class="text-alert">Service non disponible</div>');
     }
 
     websocket.onmessage = (event) => {
@@ -62,6 +63,7 @@ function initChat(login)
 
 function chat_changeUsername(newUsername)
 {
+    if ( newUsername === undefined ) newUsername = ('#' + Math.floor(Math.random() * 999999).toString(16));
     if ( websocket.readyState === WebSocket.OPEN )
     {
         websocket.send(username + ' -> ' + newUsername);

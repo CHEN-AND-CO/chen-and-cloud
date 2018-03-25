@@ -29,8 +29,17 @@ function validateLogin(event) {
                 $("#authentication").hide();
                 $('#infos').html('Authentification OK');
                 $('#connect-menu').html(login);
+
+                $('#authentication-send').off('click');
+
+                $('#connect-menu').off('click').click( (event) => {
+                    $('#profile').toggle();
+                    $('#profile h2').html(login);  
+                    $('#profile #disconnect').off('click').click(disconnect);            
+                });
                 
                 chat_changeUsername(login);
+                ajaxRequest('GET', '/php/request.php/photos/', loadPhotos);
                 break;
             default:
                 httpErrors(xhr.status);
@@ -66,9 +75,20 @@ function checkAuth(callback)
     xhr.send();
 }
 
-$('#connect-menu').click( (event) => {
-    $('#authentication-send').off('click').click(validateLogin);
-    $('#authentication').toggle();
-    console.log('click');
-    
-});
+function disconnect()
+{
+    Cookies.remove('login');
+    Cookies.remove('token');
+
+    chat_changeUsername();
+    $('#thumbnails').html('');
+    $('#image-viewer *').html('');
+
+    $('#connect-menu').off('click').click( (event) => {
+        $('#authentication-send').off('click').click(validateLogin);
+        $('#authentication').toggle();
+    });
+
+    $('#profile').hide();
+    $('#connect-menu').html('Connection');
+}

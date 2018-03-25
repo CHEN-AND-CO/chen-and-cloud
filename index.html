@@ -20,14 +20,24 @@
         <!-- Gestion de l'Authentification -->
         <div id="authentication" class="popup">
             <h2>Authentification</h2>
-            <form action="#" class="login">
+            <form action="#" class="popup-content">
                 <input type="text" id="login" placeholder="Entrez votre login" required>
                 <input type="password" id="password" placeholder="Entrez votre mot de passe" required>
         
-                <button class="" id="authentication-send">
-                     Se connecter
+                <button class="btn-action btn-emphased" id="authentication-send">
+                    ↳ Se connecter
+                </button>
+                <button class="btn-action" id="create-account">
+                    Créer un compte
                 </button>
             </form>
+        </div>
+
+        <div id="profile" class="popup">
+            <div class="popup-content">
+                <h2></h2>
+                <button class="btn-action btn-emphased" id="disconnect">Déconnection</button>
+            </div>
         </div>
 
         <div id="infos"></div>
