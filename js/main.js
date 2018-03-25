@@ -6,6 +6,7 @@ $(() => {
         {
             $('#connect-menu').html(login);
             initChat(login);
+            ajaxRequest('GET', '/php/request.php/photos/', loadPhotos);
         } else {
             initChat();
         }
