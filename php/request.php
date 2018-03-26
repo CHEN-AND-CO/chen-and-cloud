@@ -1,12 +1,4 @@
 <?php
-/**
- * @Author: Thibault Napoléon <Imothep>
- * @Company: ISEN Yncréa Ouest
- * @Email: thibault.napoleon@isen-ouest.yncrea.fr
- * @Created Date: 29-Jan-2018 - 16:48:46
- * @Last Modified: 29-Jan-2018 - 21:46:02
- */
-
     require_once('database.php');
 
     function sendJsonData($message, $h){
@@ -65,6 +57,7 @@
     $request = substr($_SERVER['PATH_INFO'], 1);
     $request = explode('/', $request);
     $requestRessource = array_shift($request);
+
     $id = array_shift($request);
     if ($id == '') $id = NULL;
 
@@ -116,8 +109,6 @@
     }
 
     $login = verifyToken($db);
-
-    //sendJsonData($data, 'HTTP/1.1 200 OK');
 
     exit;
 ?>
