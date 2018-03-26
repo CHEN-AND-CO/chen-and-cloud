@@ -62,8 +62,8 @@ function loadComments(ajaxResponse) {
         );
     }
 
-    $("#comments-input").show();
-    $('#comments-input').submit((event) => {
+    $("#comment-input").show();
+    $('#comment-input').submit((event) => {
         var comment = $('#comment-msg').val();
         var photoId = $('#photo').attr('photoid');
         event.preventDefault();
