@@ -34,12 +34,12 @@ function loadPhoto(ajaxResponse) {
 function loadComments(ajaxResponse) {
     var comments = JSON.parse(ajaxResponse);
     console.log(comments);
-    
+
     $('#comments').html("");
     for (const i in comments) {
         var balise = document.createElement('div');
         console.log(comments[i].userLogin);
-        
+
         var comment = '<div class="panel panel-default"><div class="panel-body">' +
             comments[i].userLogin + ' : ' + comments[i].comment +
             '<span id=delete-' + comments[i].id +
