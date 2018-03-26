@@ -13,7 +13,7 @@ function loadPhotos(ajaxResponse) {
             function (event) {
                 var id = event.target.id.substr(6);
                 event.preventDefault();
-                ajaxRequest('GET', 'php/request.php/photos/' + id, loadPhoto);
+                ajaxRequest('GET', 'php/request.php/photos/', loadPhoto, 'id=' + id);
                 ajaxRequest('GET', 'php/request.php/comments/', loadComments, 'id=' + id);
             });
     }
