@@ -35,7 +35,7 @@ function loadComments(ajaxResponse) {
     var comments = JSON.parse(ajaxResponse);
     console.log(comments);
 
-    $('#comments').html("");
+    $('#comments .msg-list').html("");
     for (const i in comments) {
         var balise = document.createElement('div');
         console.log(comments[i].userLogin);
