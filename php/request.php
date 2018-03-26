@@ -56,7 +56,7 @@
     $requestRessource = array_shift($request);
 
     if ($requestRessource == 'photos'){
-        if(isset($_GET['id']) == NULL){
+        if(isset($_GET['id'])){
             $output = dbRequestPhotos($db);
         }else{
             $output = dbRequestPhoto($db, intval($_GET['id']));
