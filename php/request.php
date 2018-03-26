@@ -91,6 +91,7 @@
         if($requestType == 'GET')
         {
             $output = dbRequestComments($db, intval($_GET['id']));
+            error_log($_GET['id']);
             sendJsonData($output, 'HTTP/1.1 200 OK');
             exit;
         }
