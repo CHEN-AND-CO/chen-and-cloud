@@ -88,7 +88,7 @@
   {
     try
     {
-      $request = 'select id, comment from comments where photoId=:photoId';
+      $request = 'select id, comment, userLogin from comments where photoId=:photoId';
       $statement = $db->prepare($request);
       $statement->bindParam(':photoId', $photoId, PDO::PARAM_INT);
       $statement->execute();
