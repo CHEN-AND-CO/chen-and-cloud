@@ -85,7 +85,7 @@
         else if($requestType == 'POST')
         {
             error_log('id: '.$_POST['id']);
-            error_log('comment: '.$_POST('comment'));
+            error_log('comment: '. $_POST('comment'));
             $output = dbAddComment($db, verifyToken($db), intval($_POST['id']), $_POST('comment'));
             sendJsonData($output, 'HTTP/1.1 201 OK');
         }
