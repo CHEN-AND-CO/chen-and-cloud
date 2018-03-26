@@ -1,11 +1,12 @@
 const WebSocket = require('ws');
 const settings = {
-    port: 12345
+    port: 12345,
+    url: 'localhost'
 };
 
 parseArgs();
 
-const websocket = new WebSocket('ws://localhost:'+ settings.port);
+const websocket = new WebSocket('ws://' + settings.url + ':' + settings.port);
 
 websocket.on('open', () => {
     websocket.send('Local terminal client connected');
@@ -30,6 +31,12 @@ function parseArgs()
             case '-p':
             case '--port':
                 settings.port = parseInt(process.argv[i + 1]);
+                i++;
+                break;
+
+            case '-u':
+            case '--url':
+                settings.url = process.argv[i+1];
                 i++;
                 break;
 
