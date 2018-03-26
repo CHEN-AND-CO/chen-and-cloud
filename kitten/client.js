@@ -9,3 +9,7 @@ websocket.on('open', () => {
 websocket.on('message', (data) => {
     console.log(data);
 });
+
+websocket.on('error', () => {
+    console.log('Failed to connect to ' + websocket.url);
+});
