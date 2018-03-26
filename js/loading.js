@@ -38,8 +38,10 @@ function loadComments(ajaxResponse) {
     $('#comments').html("");
     for (const i in comments) {
         var balise = document.createElement('div');
+        console.log(comments[i].userLogin);
+        
         var comment = '<div class="panel panel-default"><div class="panel-body">' +
-            comments[i].login + ' : ' + comments[i].comment +
+            comments[i].userLogin + ' : ' + comments[i].comment +
             '<span id=delete-' + comments[i].id +
             ' class="glyphicon ' + 'glyphicon-trash pull-right"></span>' + '</div></div>';
         balise.innerHTML = comment;
