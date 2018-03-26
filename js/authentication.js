@@ -39,7 +39,7 @@ function validateLogin(event) {
                 });
                 
                 chat_changeUsername(login);
-                ajaxRequest('GET', '/php/request.php/photos/', loadPhotos);
+                ajaxRequest('GET', 'php/request.php/photos/', loadPhotos);
                 break;
             default:
                 httpErrors(xhr.status);
