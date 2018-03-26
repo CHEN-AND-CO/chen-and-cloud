@@ -62,31 +62,17 @@ function loadComments(ajaxResponse) {
         );
     }
 
-    $("#comments-input").show();/*
-    $('#add').unbind('click').click(
-        function (event) {
-            var comment = $('#comment').val();
-            var photoId = $('#photo').attr('photoid');
-            event.preventDefault();
+    $("#comments-input").show();
+    $('#comments-input').submit((event) => {
+        var comment = $('#comment-msg').val();
+        var photoId = $('#photo').attr('photoid');
+        event.preventDefault();
 
-            if (comment != '' && photoId != undefined) {
-                ajaxRequest('POST', 'php/request.php/comments/', () => {
-                    ajaxRequest('GET', 'php/request.php/comments/', loadComments,
-                        'id=' + photoId);
-                }, 'id=' + photoId + '&comment=' + comment);
-            }
-        });*/
-}
-
-function addComment(event) {
-    var comment = $('#comment-msg').val();
-    var photoId = $('#photo').attr('photoid');
-    event.preventDefault();
-
-    if (comment != '' && photoId != undefined) {
-        ajaxRequest('POST', 'php/request.php/comments/', () => {
-            ajaxRequest('GET', 'php/request.php/comments/', loadComments,
-                'id=' + photoId);
-        }, 'id=' + photoId + '&comment=' + comment);
-    }
+        if (comment != '' && photoId != undefined) {
+            ajaxRequest('POST', 'php/request.php/comments/', () => {
+                ajaxRequest('GET', 'php/request.php/comments/', loadComments,
+                    'id=' + photoId);
+            }, 'id=' + photoId + '&comment=' + comment);
+        }
+    });
 }
