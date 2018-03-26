@@ -23,6 +23,8 @@ function ajaxRequest(type, request, callback, data = null) {
   xhr = new XMLHttpRequest();
   if (type == 'GET' && data != null)
     request += '?' + data;
+  if (type == 'POST' && data != null)
+    request += '?' + data;
   xhr.open(type, request, true);
   xhr.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('token'));
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -30,7 +32,7 @@ function ajaxRequest(type, request, callback, data = null) {
   // Add the onload function.
   xhr.onload = function () {
     console.log(xhr.status);
-    
+
     switch (xhr.status) {
       case 200:
       case 201:
