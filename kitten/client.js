@@ -1,4 +1,7 @@
-const WS = require('ws');
+const WebSocket = require('ws');
+const settings = {
+    port: 12345
+};
 
 parseArgs();
 
