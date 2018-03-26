@@ -40,12 +40,12 @@ function loadComments(ajaxResponse) {
         var balise = document.createElement('div');
         console.log(comments[i].userLogin);
 
-        var comment = '<div class="panel panel-default"><div class="panel-body">' +
-            comments[i].userLogin + ' : ' + comments[i].comment +
-            '<span id=delete-' + comments[i].id +
-            ' class="glyphicon ' + 'glyphicon-trash pull-right"></span>' + '</div></div>';
+        var comment = '<li class="message"><span class="author">';
+        comment += comments[i].userLogin;
+        comment += '</span>' + comments[i].comment + '</li>';
+
         balise.innerHTML = comment;
-        $('#comments').append(balise);
+        $('#comments .msg-list').append(balise);
 
         $('#delete-' + comments[i].id).unbind('click').click(
             function (event) {
