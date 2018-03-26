@@ -91,17 +91,17 @@
         if($requestType == 'GET')
         {
             $output = dbRequestComments($db, intval($_GET['id']));
-            error_log($_GET['id']);
             sendJsonData($output, 'HTTP/1.1 200 OK');
-            exit;
         }
         else if($requestType == 'POST')
         {
-            $output = dbAddComment($db, intval($id), intval($id), $_POST('comment'));
+            $output = dbAddComment($db, verifyToken($db), intval($_POST['id']), $_POST('comment'));
+            sendJsonData($output, 'HTTP/1.1 201 OK');
         }
         else if($requestType == 'DELETE')
         {
-            $output = dbDeleteComment($db, intval($id), intval($id));
+            $output = dbDeleteComment($db, verifyToken($db), intval($_GET['id']));
+            sendJsonData($output, 'HTTP/1.1 201 OK');
         }
     }
     else
