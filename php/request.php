@@ -41,9 +41,6 @@
         return $login;
     }
 
-
-
-
     // Database connexion.
     $db = dbConnect();
     if (!$db)
@@ -61,15 +58,10 @@
     $id = array_shift($request);
     if ($id == '') $id = NULL;
 
-
-    if ($requestRessource == 'photos')
-    {
-        if($id == NULL)
-        {
+    if ($requestRessource == 'photos'){
+        if($id == NULL){
             $output = dbRequestPhotos($db);
-        }
-        else
-        {
+        }else{
             $output = dbRequestPhoto($db, intval($id));
         }
 
