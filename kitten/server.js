@@ -15,10 +15,10 @@ parseArgs();
 
 //Create the websocket server
 const websocket = new WS.Server( {
-    port: 12345
+    port: settings.port
 });
 
-if (settings.debug) console.log('Server is listening on port 12345');
+if (settings.debug) console.log('Server is listening on port ' + settings.port);
 
 websocket.on('connection', (client) => {
     //New client
