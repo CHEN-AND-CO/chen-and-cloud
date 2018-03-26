@@ -63,7 +63,7 @@ function loadComments(ajaxResponse) {
     }
 
     $("#comment-input").show();
-    $('#comment-input').submit((event) => {
+    $('#comment-input').off('submit').submit((event) => {
         var comment = $('#comment-msg').val();
         var photoId = $('#photo').attr('photoid');
         event.preventDefault();
