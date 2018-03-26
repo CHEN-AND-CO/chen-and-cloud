@@ -58,14 +58,11 @@
     if ($requestRessource == 'photos'){
         if(!isset($_GET['id'])){
             $output = dbRequestPhotos($db);
+            sendJsonData($output, 'HTTP/1.1 200 OK');
         }else{
             $output = dbRequestPhoto($db, intval($_GET['id']));
-        }
-
-        if($output != false){
             sendJsonData($output, 'HTTP/1.1 200 OK');
         }
-
     }
     else if($requestRessource == 'authenticate')
     {
