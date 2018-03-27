@@ -230,6 +230,23 @@
     return true;
   }
 
+  function dbAddUser($db, $login, $password)
+  {
+    try
+    {
+      $request = 'insert into users(login, password, token)
+        values('.$login.',sha('.$password.'), NULL)';
+      $statement = $db->prepare($request);
+      $statement->execute();
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return true;
+  }
+
   //----------------------------------------------------------------------------
   //--- dbAddToken -------------------------------------------------------------
   //----------------------------------------------------------------------------

@@ -67,6 +67,13 @@
     else if($requestRessource == 'authenticate')
     {
         authenticate($db);
+    }else if($requestRessource == 'register' && $requestType == 'POST'){
+        if(dbAddUser($db, $_POST['login'], $_POST['password'])){
+            authenticate($db);
+            header('HTTP/1.1 201 OK');
+        }else{
+            header('HTTP/1.1 400 Bad Request');
+        }
     }
     else if ($requestRessource == 'checkToken')
     {

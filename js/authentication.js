@@ -2,6 +2,8 @@
 
 function authentication() {
     $('#authentication-send').off('click').click(validateLogin);
+    $('#create-account').off('click').click(createLogin);
+
     $("#authentication").show();
 }
 
@@ -102,18 +104,19 @@ function createLogin(event) {
     Cookies.set('login', login);
 
     xhr = new XMLHttpRequest();
-    xhr.open('GET', 'php/request.php/authenticate', true);
+    xhr.open('POST', 'php/request.php/register', true);
     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(login + ':' + password));
 
     xhr.onload = function () {
         switch (xhr.status) {
             case 200:
+            case 201:
                 Cookies.set('token', xhr.responseText);
                 $("#authentication").hide();
                 //$('#infos').html('Authentification OK'); //TODO : notification en popup
                 $('#connect-menu').html(login);
 
-                $('#authentication-send').off('click');
+                $('#create-account').off('click');
 
                 $('#connect-menu').off('click').click((event) => {
                     $('#profile').toggle(100);
