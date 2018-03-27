@@ -67,11 +67,16 @@
     else if($requestRessource == 'authenticate')
     {
         authenticate($db);
-    }else if($requestRessource == 'register' && $requestType == 'POST'){
-        if(dbAddUser($db, $_POST['login'], $_POST['password'])){
+    }
+    else if($requestRessource == 'register' && $requestType == 'POST')
+    {
+        if(dbAddUser($db, $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']))
+        {
+            error_log('User created, no error');
             authenticate($db);
             header('HTTP/1.1 201 OK');
         }else{
+            error_log('Registery refused (DB)');
             header('HTTP/1.1 400 Bad Request');
         }
     }

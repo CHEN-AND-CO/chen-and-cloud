@@ -235,9 +235,13 @@
     try
     {
       $request = 'insert into users(login, password, token)
-        values('.$login.',sha('.$password.'), NULL)';
+        values(:login,sha(:password), NULL)';
       $statement = $db->prepare($request);
-      $statement->execute();
+      $statement->bindParam (':login', $login, PDO::PARAM_STR, 20);
+      $statement->bindParam (':password', $password, PDO::PARAM_STR, 40);
+      $result = $statement->execute();
+      
+      error_log($result);
     }
     catch (PDOException $exception)
     {

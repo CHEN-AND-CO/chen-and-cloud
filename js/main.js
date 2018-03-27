@@ -19,10 +19,6 @@ $(() => {
 
             $('#connect-menu').off('click').click((event) => {
                 $('#authentication-send').off('click').click(validateLogin);
-                $('#authentication').toggle();
-            });
-
-            $('#connect-menu').off('click').click((event) => {
                 $('#create-account').off('click').click(createLogin);
                 $('#authentication').toggle();
             });
