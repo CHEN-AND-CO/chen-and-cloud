@@ -5,18 +5,17 @@ function loadPhotos(ajaxResponse) {
 
     for (const i in photos) {
         var balise = document.createElement('div');
-        //balise.className = 'thumbnail';
         balise.innerHTML = '<a href="#"><img class="thumbnail" src="' + photos[i].src + '" id="photo-' + photos[i].id + '"></a>';
         $('#thumbnails').append(balise);
 
         $('#photo-' + photos[i].id).unbind('click')
             .click(
-            function (event) {
-                var id = event.target.id.substr(6);
-                event.preventDefault();
-                ajaxRequest('GET', 'php/request.php/photos/', loadPhoto, 'id=' + id);
-                ajaxRequest('GET', 'php/request.php/comments/', loadComments, 'id=' + id);
-            })
+                function (event) {
+                    var id = event.target.id.substr(6);
+                    event.preventDefault();
+                    ajaxRequest('GET', 'php/request.php/photos/', loadPhoto, 'id=' + id);
+                    ajaxRequest('GET', 'php/request.php/comments/', loadComments, 'id=' + id);
+                })
             .on('load', (event) => {
                 showPhotosAnim(photos.length);
             })
@@ -83,17 +82,15 @@ function loadComments(ajaxResponse) {
 
 var nbItemsLoaded = 0;
 
-function showPhotosAnim(nbItems)
-{
+function showPhotosAnim(nbItems) {
     nbItemsLoaded++;
 
-    console.log(nbItemsLoaded+' loaded out of '+nbItems);
-    
+    console.log(nbItemsLoaded + ' loaded out of ' + nbItems);
 
-    if ( nbItemsLoaded >= nbItems )
-    {
-        $('.thumbnail').each( (i) => {
-            $( '.thumbnail#photo-' + (i+1) ).css('transition-delay', (i/40)+'s').css('opacity', '1');            
+
+    if (nbItemsLoaded >= nbItems) {
+        $('.thumbnail').each((i) => {
+            $('.thumbnail#photo-' + (i + 1)).css('transition-delay', (i / 40) + 's').css('opacity', '1');
         });
     }
 }
