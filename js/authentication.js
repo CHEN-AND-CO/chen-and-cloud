@@ -27,13 +27,13 @@ function validateLogin(event) {
             case 200:
                 Cookies.set('token', xhr.responseText);
                 $("#authentication").hide();
-                $('#infos').html('Authentification OK');
+                //$('#infos').html('Authentification OK'); //TODO : notification en popup
                 $('#connect-menu').html(login);
 
                 $('#authentication-send').off('click');
 
                 $('#connect-menu').off('click').click( (event) => {
-                    $('#profile').toggle();
+                    $('#profile').toggle(100);
                     $('#profile h2').html(login);  
                     $('#profile #disconnect').off('click').click(disconnect);            
                 });
@@ -86,7 +86,7 @@ function disconnect()
 
     $('#connect-menu').off('click').click( (event) => {
         $('#authentication-send').off('click').click(validateLogin);
-        $('#authentication').toggle();
+        $('#authentication').toggle(100);
     });
 
     $('#profile').hide();

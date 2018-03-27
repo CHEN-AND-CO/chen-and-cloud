@@ -297,6 +297,8 @@ aside
 .thumbnail
 {
     width: 15.55vw;
+
+    transition: opacity 0.5s;
 }
 
 .popup-content
@@ -356,13 +358,13 @@ aside
 
 .popup
 {
-    position: absolute;
+    position: fixed;
     z-index: 999;
 
     padding: 1.5em;
 
     color: var(--bkcol);
-    background-color: rgba(255, 255, 255, 0.651);
+    background-color: rgb(206, 206, 206);
     box-shadow: 0 0 20px black
 }
 
