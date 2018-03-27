@@ -21,12 +21,9 @@ function loadPhotos(ajaxResponse) {
 
 function loadPhoto(ajaxResponse) {
     var photo = JSON.parse(ajaxResponse);
-    var balise;
-    //balise += '<div class="panel panel-default"><div class="panel-body">';
-    balise = '<h2>' + photo[0].title + '</h2>';
-    //balise += '<div class="row"><div class="col-xs-12 col-md-12">';
+    var balise = '<h2>' + photo[0].title + '</h2>';
     balise += '<a href="#" class="thumbnail"><img src="' + photo[0].src + '"></a>';
-    //balise += '</div></div></div></div>';
+
     $('#photo').html(balise);
     $('#photo').attr('photoid', photo[0].id);
 }
@@ -54,9 +51,9 @@ function loadComments(ajaxResponse) {
                 event.preventDefault();
 
                 if (id != undefined && photoId != undefined) {
-                    ajaxRequest('DELETE', 'php/request.php/comments/' + id, function () {
+                    ajaxRequest('DELETE', 'php/request.php/comments/', function () {
                         ajaxRequest('GET', 'php/request.php/comments/', loadComments, 'id=' + photoId);
-                    });
+                    }, 'id=' + id);
                 }
             }
         );

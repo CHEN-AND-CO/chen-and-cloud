@@ -21,7 +21,7 @@ function ajaxRequest(type, request, callback, data = null) {
 
   // Create XML HTTP request.
   xhr = new XMLHttpRequest();
-  if (data != null && (type == 'GET' || type == 'POST')) {
+  if (data != null && (type == 'GET' || type == 'POST' || type == 'DELETE')) {
     request += '?' + data;
   }
 
@@ -59,10 +59,9 @@ function ajaxRequest(type, request, callback, data = null) {
 // Display a message corresponding to an Http error code.
 // \param errorNumber the error code.
 function httpErrors(errorNumber) {
-  var text;
-
-  text = '<div class="alert alert-danger" role="alert">';
+  var text = '<div class="alert alert-danger" role="alert">';
   text += '<span class="glyphicon glyphicon-exclamation-sign"></span>';
+
   switch (errorNumber) {
     case 400:
       // Bad request.
