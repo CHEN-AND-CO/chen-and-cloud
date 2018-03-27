@@ -103,6 +103,9 @@ function createLogin(event) {
 
     Cookies.set('login', login);
 
+    console.log('Attempted to create user ' + login + ':' + password);
+    
+
     xhr = new XMLHttpRequest();
     xhr.open('POST', 'php/request.php/register', true);
     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(login + ':' + password));
@@ -116,7 +119,7 @@ function createLogin(event) {
                 //$('#infos').html('Authentification OK'); //TODO : notification en popup
                 $('#connect-menu').html(login);
 
-                $('#create-account').off('click');
+                //$('#create-account').off('click');
 
                 $('#connect-menu').off('click').click((event) => {
                     $('#profile').toggle(100);
