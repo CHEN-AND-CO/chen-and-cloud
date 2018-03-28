@@ -43,9 +43,10 @@ function loadComments(ajaxResponse) {
         var balise = document.createElement('div');
         console.log(comments[i].userLogin);
 
-        var comment = '<li class="message"><span class="author">';
+        var comment = '<li class="message"><div class="comment-header"><span class="author">';
         comment += comments[i].userLogin;
-        comment += '</span>' + comments[i].comment + '</li>';
+        comment += '</span><button class="comment-delete" id="delete-' + comments[i].id + '">×</button></div>';
+        comment += comments[i].comment + '</li>';
 
         balise.innerHTML = comment;
         $('#comments .msg-list').append(balise);
@@ -73,8 +74,7 @@ function loadComments(ajaxResponse) {
 
         if (comment != '' && photoId != undefined) {
             ajaxRequest('POST', 'php/request.php/comments/', () => {
-                ajaxRequest('GET', 'php/request.php/comments/', loadComments,
-                    'id=' + photoId);
+                ajaxRequest('GET', 'php/request.php/comments/', loadComments, 'id=' + photoId);
             }, 'id=' + photoId + '&comment=' + comment);
         }
     });

@@ -263,6 +263,7 @@ aside
     z-index: 1;
     max-width: 71vw;
 }
+
 .author
 {
     display: block;
@@ -272,6 +273,26 @@ aside
 .main-title
 {
 
+}
+
+.comment-delete
+{
+    display: inline-block;
+
+    /*height: 1em;
+    padding: 10px;*/
+    font-weight: bolder;
+    
+    background-color: transparent;
+    color: rgb(202, 146, 146);
+    border: none;
+}
+
+.comment-header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .msg-list
