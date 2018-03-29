@@ -79,7 +79,7 @@ function loadComments(ajaxResponse) {
             }, 'id=' + photoId + '&comment=' + comment);
         }
 
-        $('#comment-msg').html('');
+        $('#comment-msg').val('');
     });
 }
 
