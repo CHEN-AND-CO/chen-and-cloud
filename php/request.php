@@ -19,7 +19,7 @@
 
         /* Vérifie l'utilisateur */
         if(!dbCheckUserInjection($db, $login, $pass)){
-            header(HTTP_PROTOCOL.'/1.1 401 Unauthorized');
+            header('HTTP/1.1 401 Unauthorized');
             exit;
         }
 
@@ -48,7 +48,7 @@
         /* Vérifie le token et récupère le login */
         if (preg_match('/Bearer (.*)/', $token, $tab))$token = $tab[1];
         if(!($login = dbVerifyToken($db, $token))){
-            header(HTTP_PROTOCOL.'/1.1 401 Unauthorized');
+            header('HTTP/1.1 401 Unauthorized');
             exit;
         }
 
@@ -60,7 +60,7 @@
     $db = dbConnect();
     if (!$db)
     {
-        header (HTTP_PROTOCOL.'/1.1 503 Service Unavailable');
+        header ('HTTP/1.1 503 Service Unavailable');
         exit;
     }
 
@@ -74,10 +74,10 @@
     if ($requestRessource == 'photos'){ // Demande des photos
         if(!isset($_GET['id'])){ // Si pas de photo précisée
             $output = dbRequestPhotos($db); // On demande à la BDD tous les liens
-            sendJsonData($output, HTTP_PROTOCOL.'/1.1 200 OK'); // On envoie le résultat
+            sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
         }else{ // Sinon
             $output = dbRequestPhoto($db, intval($_GET['id'])); // On demande l'emplacement de la photo à la BDD
-            sendJsonData($output, HTTP_PROTOCOL.'/1.1 200 OK'); // On envoie le résultat
+            sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
         }
     }
     else if($requestRessource == 'authenticate') // Si on veut s'authentifier
@@ -90,37 +90,37 @@
         {
             error_log('User created, no error'); // Erreur pas d'erreur :D
             authenticate($db); // On s'authentifie
-            header(HTTP_PROTOCOL.'/1.1 201 OK'); // Tout va bien
+            header('HTTP/1.1 201 OK'); // Tout va bien
         }else{ // Sinon
             error_log('Registery refused (DB)'); // Aie
-            header(HTTP_PROTOCOL.'/1.1 400 Bad Request'); // Du coup pas bien
+            header('HTTP/1.1 400 Bad Request'); // Du coup pas bien
         }
     }
     else if ($requestRessource == 'checkToken') // Vérification du token
     {
-        if (verifyToken($db)) header(HTTP_PROTOCOL.'/1.1 200 OK'); //On fait ça
+        if (verifyToken($db)) header('HTTP/1.1 200 OK'); //On fait ça
     }
     else if($requestRessource == 'comments') // Demande des commentaires
     {
         if($requestType == 'GET')
         {
             $output = dbRequestComments($db, intval($_GET['id']));
-            sendJsonData($output, HTTP_PROTOCOL.'/1.1 200 OK');
+            sendJsonData($output, 'HTTP/1.1 200 OK');
         }
         else if($requestType == 'POST')
         {
             $output = dbAddComment($db, verifyToken($db), intval($_POST['id']), $_POST['comment']);
-            sendJsonData($output, HTTP_PROTOCOL.'/1.1 201 OK');
+            sendJsonData($output, 'HTTP/1.1 201 OK');
         }
         else if($requestType == 'DELETE')
         {
             $output = dbDeleteComment($db, verifyToken($db), intval($_GET['id']));
-            sendJsonData($output, HTTP_PROTOCOL.'/1.1 201 OK');
+            sendJsonData($output, 'HTTP/1.1 201 OK');
         }
     }
     else
     {
-        header(HTTP_PROTOCOL.'/1.1 400 Bad Request');
+        header('HTTP/1.1 400 Bad Request');
 
         exit;
     }

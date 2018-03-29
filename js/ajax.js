@@ -28,7 +28,6 @@ function ajaxRequest(type, request, callback, data = null) {
   xhr.open(type, request, true);
   xhr.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('token'));
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 
   // Add the onload function.
   xhr.onload = function () {
