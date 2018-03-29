@@ -253,6 +253,16 @@ aside
     margin: auto;
 }
 
+#comment-input
+{
+    margin: 0 1em;
+}
+
+#comment-msg
+{
+    width: 100%;
+}
+
 #image-viewer
 {
     margin: 2vw;
@@ -261,7 +271,7 @@ aside
 #image-viewer #photo img
 {
     z-index: 1;
-    max-width: 71vw;
+    width: 100%;
 }
 
 .author

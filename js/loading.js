@@ -78,6 +78,8 @@ function loadComments(ajaxResponse) {
                 ajaxRequest('GET', 'php/request.php/comments/', loadComments, 'id=' + photoId);
             }, 'id=' + photoId + '&comment=' + comment);
         }
+
+        $('#comment-msg').html('');
     });
 }
 
