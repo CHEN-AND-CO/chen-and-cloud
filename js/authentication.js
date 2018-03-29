@@ -80,7 +80,8 @@ function disconnect() {
 
     chat_changeUsername();
     $('#thumbnails').html('');
-    $('#image-viewer *').html('');
+    $('#image-viewer #photo').html('');
+    $('#image-viewer #comments ul.msg-list').html('');
 
     $('#connect-menu').off('click').click((event) => {
         $('#authentication-send').off('click').click(validateLogin);
