@@ -10,7 +10,7 @@ $(() => {
             ajaxRequest('GET', 'php/request.php/photos/', loadPhotos);
 
             $('#connect-menu').off('click').click((event) => {
-                $('#profile').toggle();
+                $('#profile').toggle(100);
                 $('#profile h2').html(login);
                 $('#profile #disconnect').click(disconnect);
             });
@@ -20,7 +20,7 @@ $(() => {
             $('#connect-menu').off('click').click((event) => {
                 $('#authentication-send').off('click').click(validateLogin);
                 $('#create-account').off('click').click(createLogin);
-                $('#authentication').toggle();
+                $('#authentication').toggle(100);
             });
         }
     });
