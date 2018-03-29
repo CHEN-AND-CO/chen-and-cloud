@@ -241,7 +241,7 @@
       $statement->bindParam (':password', $password, PDO::PARAM_STR, 40);
       $result = $statement->execute();
       
-      error_log($result);
+      error_log('Request : '.$request.','.$login.','.$password.' returned '.$result);
     }
     catch (PDOException $exception)
     {

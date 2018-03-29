@@ -21,6 +21,8 @@ $(() => {
             initChat(); //Init. chat sans login, un identifiant aléatoire sera affecté
 
             $('#connect-menu').off('click').click((event) => {
+                console.log($('#create-account'));
+                
                 $('#authentication-send').off('click').click(validateLogin);
                 $('#create-account').off('click').click(createLogin);
                 $('#authentication').toggle(100);
