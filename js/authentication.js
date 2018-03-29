@@ -105,7 +105,7 @@ function createLogin(event) {
     Cookies.set('login', login);
 
     console.log('Attempted to create user ' + login + ':' + password);
-    
+
 
     xhr = new XMLHttpRequest();
     xhr.open('POST', 'php/request.php/register', true);
