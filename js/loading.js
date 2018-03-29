@@ -45,8 +45,9 @@ function loadComments(ajaxResponse) {
 
         var comment = '<li class="message"><div class="comment-header"><span class="author">';
         comment += comments[i].userLogin;
-        comment += '</span><button class="comment-delete" id="delete-' + comments[i].id + '">×</button></div>';
-        comment += comments[i].comment + '</li>';
+        comment += '</span>';
+        if ( comments[i].userLogin === Cookies.get('login') ) comment += '<button class="comment-delete" id="delete-' + comments[i].id + '">×</button>';
+        comment += '</div>' + comments[i].comment + '</li>';
 
         balise.innerHTML = comment;
         $('#comments .msg-list').append(balise);
