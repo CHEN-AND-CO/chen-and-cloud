@@ -56,7 +56,7 @@
         return $login;
     }
 
-    // Database connexion.
+    /* Connexion à la BDD */
     $db = dbConnect();
     if (!$db)
     {
@@ -64,42 +64,43 @@
         exit;
     }
 
-    // Check the request.
+    /* Vérifie la requete */
     $requestType = $_SERVER['REQUEST_METHOD'];
     $request = substr($_SERVER['PATH_INFO'], 1);
     $request = explode('/', $request);
     $requestRessource = array_shift($request);
 
-    if ($requestRessource == 'photos'){
-        if(!isset($_GET['id'])){
-            $output = dbRequestPhotos($db);
-            sendJsonData($output, 'HTTP/1.1 200 OK');
-        }else{
-            $output = dbRequestPhoto($db, intval($_GET['id']));
-            sendJsonData($output, 'HTTP/1.1 200 OK');
+    /* Gestion des requetes */
+    if ($requestRessource == 'photos'){ // Demande des photos
+        if(!isset($_GET['id'])){ // Si pas de photo précisée
+            $output = dbRequestPhotos($db); // On demande à la BDD tous les liens
+            sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
+        }else{ // Sinon
+            $output = dbRequestPhoto($db, intval($_GET['id'])); // On demande l'emplacement de la photo à la BDD
+            sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
         }
     }
-    else if($requestRessource == 'authenticate')
+    else if($requestRessource == 'authenticate') // Si on veut s'authentifier
     {
-        authenticate($db);
+        authenticate($db); //Authentification
     }
-    else if($requestRessource == 'register' && $requestType == 'POST')
+    else if($requestRessource == 'register' && $requestType == 'POST') // Si on veut s'enregistrer
     {
-        if(dbAddUser($db, $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']))
+        if(dbAddUser($db, $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'])) //On ajoute l'user
         {
-            error_log('User created, no error');
-            authenticate($db);
-            header('HTTP/1.1 201 OK');
-        }else{
-            error_log('Registery refused (DB)');
-            header('HTTP/1.1 400 Bad Request');
+            error_log('User created, no error'); // Erreur pas d'erreur :D
+            authenticate($db); // On s'authentifie
+            header('HTTP/1.1 201 OK'); // Tout va bien
+        }else{ // Sinon
+            error_log('Registery refused (DB)'); // Aie
+            header('HTTP/1.1 400 Bad Request'); // Du coup pas bien
         }
     }
-    else if ($requestRessource == 'checkToken')
+    else if ($requestRessource == 'checkToken') // Vérification du token
     {
-        if (verifyToken($db)) header('HTTP/1.1 200 OK');
+        if (verifyToken($db)) header('HTTP/1.1 200 OK'); //On fait ça
     }
-    else if($requestRessource == 'comments')
+    else if($requestRessource == 'comments') // Demande des commentaires
     {
         if($requestType == 'GET')
         {
