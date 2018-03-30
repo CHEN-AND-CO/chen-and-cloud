@@ -16,7 +16,7 @@ function initChat(login)
     permettant de pourrir la vie des autres utilisateurs en toute beauté. En plus c'est
     gratuit ! Pourquoi se gêner ?*/
     var spamString = "LE PHP TUE";  //Message à spammer
-    var toggleSpam = false;
+    var toggleSpam = toggleChat = false;
     var spammer;
 
     //Quand le websocket se connecte, on envoie un petit message de notification
@@ -51,25 +51,51 @@ function initChat(login)
         $('#chat-input input').val(''); //Et on nettoie l'input
     });
 
-    //bonus : le SuperSpam3000 Premium Edition Free
-    $('#chat h2').click((ev) => {
-        console.log('click');
+    /* Vérification de la taille de l'écran avec media queries, pour 
+    déterminer s'il est judicieux d'adapter l'affichage à un téléphone par exemple*/
+    if (window.matchMedia("screen and (max-width: 640px)").matches)
+    {
+        //Adaptation à un écran de faible largeur (le chat slide sur le coté droit)
+        $('#chat h2').off('click').click((ev) => {
 
-        toggleSpam = !toggleSpam; //Magie magie
+            toggleChat = !toggleChat;
 
-        if (toggleSpam) {
-            $('#chat ul').css('background-color', 'red'); //Le rouge c'est bien
+            if ( toggleChat )
+            {
+                //Afficher le chat
+                $('#chat h2').css('transform', 'translateX(0%)');
+                $('#chat').css('transform', 'translateX(0%)');
+            }
+            else
+            {
+                //Masquer le chat (on laisse dépasser le titre pour pouvoir le cliquer)
+                $('#chat h2').css('transform', 'translateX(-50%)');
+                $('#chat').css('transform', 'translateX(100%)');
+            }
+        });
+    }
+    else
+    {
+        //bonus : le SuperSpam3000 Premium Edition Free
+        $('#chat h2').click((ev) => {
+            console.log('click');
 
-            spammer = setInterval(() => { //Oui
-                websocket.send(spamString);
-            }, 50); //Pour bien défoncer le serveur, n'hésitez surtout pas à mettre 0 ici ;)
-        }
-        else { //Non
-            $('#chat ul').css('background-color', 'inherit');
+            toggleSpam = !toggleSpam; //Magie magie
 
-            clearInterval(spammer);
-        }
-    });
+            if (toggleSpam) {
+                $('#chat ul').css('background-color', 'red'); //Le rouge c'est bien
+
+                spammer = setInterval(() => { //Oui
+                    websocket.send(spamString);
+                }, 50); //Pour bien défoncer le serveur, n'hésitez surtout pas à mettre 0 ici ;)
+            }
+            else { //Non
+                $('#chat ul').css('background-color', 'inherit');
+
+                clearInterval(spammer);
+            }
+        });
+    }
 }
 
 
