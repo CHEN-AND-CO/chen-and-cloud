@@ -1,4 +1,5 @@
 # Chen & Co vous présente la première démo de Chen&Cloud en version alpha
+![**working**](https://image.noelshack.com/fichiers/2018/13/5/1522443657-git-working.png)
 
 > **Attention !**
 > Vous êtes sur la branche *final-sprint*. Cette branche sert à l'implémentation de modifications non validées sur l'ensemble du projet. Si cette branche a été validée et rendue, alors tenez-la pour version finale du projet, sinon, reportez-vous à la branche *pre-final*.
