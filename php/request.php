@@ -120,12 +120,12 @@
     }
     else
     {
-        header('HTTP/1.1 400 Bad Request');
+        header('HTTP/1.1 400 Bad Request'); // Aie aie aie, on ne sait pas faire !!!
 
-        exit;
+        exit; // Bye
     }
 
-    $login = verifyToken($db);
+    $login = verifyToken($db); // Vérification du token (et stockage dans login)
 
-    exit;
+    exit; //Bye
 ?>
