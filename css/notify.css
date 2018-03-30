@@ -1,0 +1,32 @@
+
+#notify-container
+{
+    position: fixed;
+    top: 10vh;
+    left: 2vw;
+}
+
+.notification
+{
+    padding: 1em;
+
+    color: white;
+    box-shadow: 0 0 10px rgb(46, 46, 46);
+}
+
+.notification h3
+{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.notification p
+{
+    font-size: 0.8em;
+}
+
+.notification.info
+{
+    
+}
