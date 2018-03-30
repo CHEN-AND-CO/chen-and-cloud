@@ -100,22 +100,22 @@
     {
         if (verifyToken($db)) header('HTTP/1.1 200 OK'); //On fait ça
     }
-    else if($requestRessource == 'comments') // Demande des commentaires
+    else if($requestRessource == 'comments') // Gestion des commentaires
     {
-        if($requestType == 'GET')
+        if($requestType == 'GET') // Si on demande les commentaires d'une photo
         {
-            $output = dbRequestComments($db, intval($_GET['id']));
-            sendJsonData($output, 'HTTP/1.1 200 OK');
+            $output = dbRequestComments($db, intval($_GET['id'])); // Demande à la BDD
+            sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
         }
-        else if($requestType == 'POST')
+        else if($requestType == 'POST') // Si on veut créer un commentaire
         {
-            $output = dbAddComment($db, verifyToken($db), intval($_POST['id']), $_POST['comment']);
-            sendJsonData($output, 'HTTP/1.1 201 OK');
+            $output = dbAddComment($db, verifyToken($db), intval($_POST['id']), $_POST['comment']); // On demande à la bdd
+            sendJsonData($output, 'HTTP/1.1 201 OK'); // On envoie le résultat
         }
-        else if($requestType == 'DELETE')
+        else if($requestType == 'DELETE') // Si on veut créer un commentaire
         {
-            $output = dbDeleteComment($db, verifyToken($db), intval($_GET['id']));
-            sendJsonData($output, 'HTTP/1.1 201 OK');
+            $output = dbDeleteComment($db, verifyToken($db), intval($_GET['id'])); // On demande à la BDD
+            sendJsonData($output, 'HTTP/1.1 201 OK'); // On envoie le résultat
         }
     }
     else

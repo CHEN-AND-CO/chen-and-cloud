@@ -230,6 +230,14 @@
     return true;
   }
 
+  //----------------------------------------------------------------------------
+  //--- dbAddUser ------------------------------------------------------------
+  //----------------------------------------------------------------------------
+  // Add login/password of a user.
+  // \param db The connected database.
+  // \param login The login to register.
+  // \param password The password to register.
+  // \return True on success, false otherwise.
   function dbAddUser($db, $login, $password)
   {
     try
