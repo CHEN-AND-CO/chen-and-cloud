@@ -77,6 +77,25 @@
     return $result;
   }
 
+  function dbAddPhoto($db, $title, $small, $big){
+    try
+    {
+      $request = 'insert into comments(userLogin, photoId, comment)
+        values(:userLogin, :photoId, :comment)';
+      $statement = $db->prepare($request);
+      $statement->bindParam(':userLogin', $title, PDO::PARAM_STR, 20);
+      $statement->bindParam(':photoId', $photoId, PDO::PARAM_INT);
+      $statement->bindParam(':comment', $comment, PDO::PARAM_STR, 256);
+      $statement->execute();
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return true;
+  }
+
   //----------------------------------------------------------------------------
   //--- dbRequestComments ------------------------------------------------------
   //----------------------------------------------------------------------------
