@@ -1,6 +1,6 @@
 # Chen & Co vous présente la première démo de Chen&Cloud en version alpha
 
-> ##Attention !
+> **Attention !**
 > Vous êtes sur la branche *pre-final*. Cette branche est une branche servant à la pré-validation de l'ensemble du projet. Il est possible que celle-ci soit en retard sur la branche *final-sprint*. Si cette branche a été validée et rendue, il ne faut pas considérer les modifications de *final-sprint*, et conserver cette version comme version définitive.
 
 Les fonctionnalités suivantes sont implémentées:
