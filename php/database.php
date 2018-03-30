@@ -76,16 +76,26 @@
     }
     return $result;
   }
+  
 
-  function dbAddPhoto($db, $title, $small, $big){
+  //----------------------------------------------------------------------------
+  //--- dbAddPhoto -----------------------------------------------------------
+  //----------------------------------------------------------------------------
+  // Add a photo.
+  // \param db The connected database.
+  // \param title The title of the photo.
+  // \param small The path of the photo thumbail.
+  // \param large The path of the full size photo.
+  // \return True on success, false otherwise.
+  function dbAddPhoto($db, $title, $small, $large){
     try
     {
-      $request = 'insert into comments(userLogin, photoId, comment)
-        values(:userLogin, :photoId, :comment)';
+      $request = 'insert into photos(title, small, large)
+        values(:title, :small, :large)';
       $statement = $db->prepare($request);
-      $statement->bindParam(':userLogin', $title, PDO::PARAM_STR, 20);
-      $statement->bindParam(':photoId', $photoId, PDO::PARAM_INT);
-      $statement->bindParam(':comment', $comment, PDO::PARAM_STR, 256);
+      $statement->bindParam(':title', $title, PDO::PARAM_STR, 20);
+      $statement->bindParam(':small', $small, PDO::PARAM_INT);
+      $statement->bindParam(':large', $large, PDO::PARAM_STR, 256);
       $statement->execute();
     }
     catch (PDOException $exception)
