@@ -1,0 +1,38 @@
+
+img.thumbnail
+{
+    margin: 3vw;
+    width: 25vw;
+}
+
+div#comments
+{
+    width: 100%;
+}
+
+section
+{
+    width: 100%;
+}
+
+#chat
+{
+    width: 100vw;
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in;
+}
+
+#chat h2
+{
+    font-size: 4vw;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease-in;
+}
+
+#chat h2::before
+{
+    content: "<";
+    margin-right: 1em;
+    font-weight: bolder;
+}
