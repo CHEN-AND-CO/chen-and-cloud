@@ -53,7 +53,7 @@ function initChat(login)
 
     /* Vérification de la taille de l'écran avec media queries, pour 
     déterminer s'il est judicieux d'adapter l'affichage à un téléphone par exemple*/
-    if (window.matchMedia("(max-width: 800px)").matches)
+    if (window.matchMedia("handheld or (max-width: 800px)").matches)
     {
         //Adaptation à un écran de faible largeur (le chat slide sur le coté droit)
         $('#chat h2').off('click').click((ev) => {
