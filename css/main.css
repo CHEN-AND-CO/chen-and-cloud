@@ -23,7 +23,7 @@ body
     height: 100%;
 
     margin: 0;
-    padding-top: 7vh;
+    /*padding-top: 7vh;*/
 
     font-family: "Open Sans", Verdana, Arial, serif;
 
@@ -141,7 +141,9 @@ article img
 section
 {
     width: 75%;
-    margin-top: 2em;
+    min-height: 90vh;
+    margin-top: 10vh;
+    padding-top: 1em;
 
     background-color: inherit;
 }
@@ -165,7 +167,11 @@ footer > span
 {
     margin: auto;
 
-    color: wheat;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    color: rgb(196, 196, 196);
 }
 
 aside
@@ -255,6 +261,8 @@ aside
 
 #comment-input
 {
+    display: none;
+
     margin: 0 1em;
     margin-top: 2em;
 }
