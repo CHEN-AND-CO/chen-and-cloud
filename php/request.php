@@ -18,7 +18,7 @@
         $pass = $_SERVER['PHP_AUTH_PW'];
 
         /* Vérifie l'utilisateur */
-        if(!dbCheckUserInjection($db, $login, $pass)){
+        if(!dbCheckUser($db, $login, $pass)){
             header('HTTP/1.1 401 Unauthorized');
             exit;
         }
