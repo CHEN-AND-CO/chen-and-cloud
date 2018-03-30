@@ -71,13 +71,18 @@
     $requestRessource = array_shift($request);
 
     /* Gestion des requetes */
-    if ($requestRessource == 'photos'){ // Demande des photos
-        if(!isset($_GET['id'])){ // Si pas de photo précisée
-            $output = dbRequestPhotos($db); // On demande à la BDD tous les liens
-            sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
-        }else{ // Sinon
-            $output = dbRequestPhoto($db, intval($_GET['id'])); // On demande l'emplacement de la photo à la BDD
-            sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
+    if ($requestRessource == 'photos'){ // Gestion des photos
+        if($requestType == 'GET'){ //Demande une ou des photos
+            if(!isset($_GET['id'])){ // Si pas de photo précisée
+                $output = dbRequestPhotos($db); // On demande à la BDD tous les liens
+                sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
+            }else{ // Sinon
+                $output = dbRequestPhoto($db, intval($_GET['id'])); // On demande l'emplacement de la photo à la BDD
+                sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
+            }
+        }else if($requestType == 'POST'){ //Ajout d'une photo
+            $output = dbAddPhoto($db, $_POST['title'], $_POST['small'], $_POST['large']);
+            sendJsonData($output, 'HTTP/1.1 201 OK');
         }
     }
     else if($requestRessource == 'authenticate') // Si on veut s'authentifier
