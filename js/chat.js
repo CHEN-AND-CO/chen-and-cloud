@@ -35,7 +35,7 @@ function initChat(login)
     websocket.onmessage = (event) => {
         $('#chat ul.msg-list').append('<li class="message">' + event.data + '</li>');
 
-        if ( event.data.indexOf(username) > 0 ) new NotifyNotification("Quelqu'un vous a mentionné", "Un utilisateur a mentionné votre pseudo dans le chat", 'info', 5000);
+        if ( event.data.indexOf('@'+username) > 0 ) new NotifyNotification("Quelqu'un vous a mentionné", "Un utilisateur a mentionné votre pseudo dans le chat", 'info', 5000);
 
         $("#chat ul.msg-list").finish();    //Termine de précédentes animations (pour éviter des glitches)
         $("#chat ul.msg-list").animate({ scrollTop: $('#chat ul.msg-list').prop("scrollHeight") }, 1000);

@@ -1,3 +1,5 @@
+var authErrorMessage;
+
 $(() => {
     var login = Cookies.get('login');   //Récupération du login
 
@@ -34,7 +36,7 @@ $(() => {
                 $('#authentication').toggle(100);
             });
 
-            new NotifyNotification('Connection nécessaire', 'Vous devez vous authentifier pour utiliser certaines fonctionnalités de cette page', 'error');
+            authErrorMessage = new NotifyNotification('Connection nécessaire', 'Vous devez vous authentifier pour utiliser certaines fonctionnalités de cette page', 'error', -1);
         }
     });
 });

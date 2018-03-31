@@ -59,38 +59,45 @@ function ajaxRequest(type, request, callback, data = null) {
 // Display a message corresponding to an Http error code.
 // \param errorNumber the error code.
 function httpErrors(errorNumber) {
-  var text = '<div class="alert alert-danger" role="alert">';
-  text += '<span class="glyphicon glyphicon-exclamation-sign"></span>';
+  /*var text = '<div class="alert alert-danger" role="alert">';
+  text += '<span class="glyphicon glyphicon-exclamation-sign"></span>';*/
 
   switch (errorNumber) {
     case 400:
       // Bad request.
-      text += '<strong> RequÃªte incorrecte</strong>';
+      //text += '<strong> RequÃªte incorrecte</strong>';
+      new NotifyNotification("Erreur", "Requête incorrecte", 'error');
       break;
     case 401:
       // Unauthorized.
-      text += '<strong> Authentifiez vous</strong>';
+      //text += '<strong> Authentifiez vous</strong>';
+      new NotifyNotification("Erreur", "Authentification invalide", 'error');
       break;
     case 403:
       // Forbidden.
-      text += '<strong> AccÃ¨s refusÃ©</strong>';
+      //text += '<strong> AccÃ¨s refusÃ©</strong>';
+      new NotifyNotification("Erreur", "Accès refusé", 'error');
       break;
     case 404:
       // Ressource not found.
-      text += '<strong> Page non trouvÃ©e</strong>';
+      //text += '<strong> Page non trouvÃ©e</strong>';
+      new NotifyNotification("Erreur", "Page ou ressource non trouvée", 'error');
       break;
     case 500:
       // Internal server error.
-      text += '<strong> Erreur interne du serveur</strong>';
+      //text += '<strong> Erreur interne du serveur</strong>';
+      new NotifyNotification("Erreur", "Erreur interne du serveur", 'error');
       break;
     case 503:
       // Service unavailable.
-      text += '<strong> Service indisponible</strong>';
+      //text += '<strong> Service indisponible</strong>';
+      new NotifyNotification("Erreur", "Service indisponible", 'error');
       break;
     default:
-      text += '<strong> HTTP erreur ' + errorNumber + '</strong>';
+      //text += '<strong> HTTP erreur ' + errorNumber + '</strong>';
+      new NotifyNotification("Erreur", "Requête incorrecte", 'error');
       break;
   }
-  text += '</div>';
-  $('#errors').html(text);
+  //text += '</div>';
+  //$('#errors').html(text);
 }

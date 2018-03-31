@@ -31,7 +31,10 @@ function validateLogin(event) {
             case 200: case 201:
                 Cookies.set('token', xhr.responseText); //On enregistre le token dans un cookie
                 $("#authentication").hide(); //On cache le panel
-                //$('#infos').html('Authentification OK'); //TODO : notification en popup
+                //$('#infos').html('Authentification OK'); //TODO : notification en popup << DONE
+                new NotifyNotification('Connecté !', 'Vous êtes bien connecté, profitez bien !', 'ok');
+                if (authErrorMessage) authErrorMessage.hide();
+
                 $('#connect-menu').html(login); //Affichage du nom de l'utilisateur
 
                 $('#authentication-send').off('click');
@@ -94,6 +97,8 @@ function disconnect() {
 
     $('#profile').hide();
     $('#connect-menu').html('Connexion');
+
+    new NotifyNotification('Déconnecté', 'Vous êtes maintenant déconnecté', 'warning');
 }
 
 
@@ -126,6 +131,8 @@ function createLogin(event) {
                 $('#connect-menu').html(login);
 
                 //$('#create-account').off('click');
+                new NotifyNotification('Compte créé !', "Bienvenue parmis nous, l'ami !", 'ok');
+                if (authErrorMessage) authErrorMessage.hide();
 
                 $('#connect-menu').off('click').click((event) => {
                     $('#profile').toggle(100);
