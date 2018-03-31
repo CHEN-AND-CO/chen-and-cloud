@@ -1,21 +1,24 @@
-class Notification
+class NotifyNotification
 {
-    constructor( title, content, options = { type:'info', showtime:2000, onShow:() => {}, onHide:() => {} } )
+    constructor( title, content, type='info', showtime=10000, onShow = () => {}, onHide = () => {} )
     {
         this.title = title;
         this.content = content;
 
-        this.type = options.type;
-        this.showtime = options.showtime;
+        this.type = type;
+        this.showtime = showtime;
 
-        this.onshow = options.onShow;
-        this.onhide = options.onHide;
+        this.onshow = onShow;
+        this.onhide = onHide;
 
         this.DOMElement = document.createElement('div');
-
-        this.DOMElement.classList.add('notification')
-                                 .add('notif-hidden')
-                                 .add(this.type);
+        console.log(this.DOMElement);
+        
+        this.DOMElement.classList.add('notification');
+        this.DOMElement.classList.add('notif-hidden');
+        this.DOMElement.classList.add(this.type);
+                                 /*.add('notif-hidden')
+                                 .add(this.type);*/
 
         this.DOMElement.innerHTML = '<h3>'+this.title+'</h3>';
         this.DOMElement.innerHTML += '<p>'+this.content+'</p>';
@@ -27,11 +30,18 @@ class Notification
             parent.appendChild(this.DOMElement);
         }
         
-        this.display();
+        setTimeout( () => {
+            this.display();
+        }, 50);
+
+        if ( this.showtime != -1 ) setTimeout( () => {
+            this.hide();
+        }, this.showtime);        
     }
 
     display()
     {
+        console.log("show");
         this.DOMElement.classList.remove('notif-hidden');
         this.onshow();
     }
@@ -40,5 +50,9 @@ class Notification
     {
         this.DOMElement.classList.add('notif-hidden');
         this.onhide();
+
+        this.DOMElement.ontransitionend = () => {
+            this.DOMElement.remove();
+        }
     }
 }

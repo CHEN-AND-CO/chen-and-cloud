@@ -80,6 +80,8 @@ function loadComments(ajaxResponse) {
                 if (id != undefined && photoId != undefined) {
                     ajaxRequest('DELETE', 'php/request.php/comments/', function () {
                         ajaxRequest('GET', 'php/request.php/comments/', loadComments, 'id=' + photoId);
+                        new NotifyNotification('Vous avez supprimé un commentaire', "C'est triste pour lui. RIP in pepperoni", 'info');
+
                     }, 'id=' + id);
                 }
             }
@@ -97,7 +99,10 @@ function loadComments(ajaxResponse) {
         //Ajout du commentaire à la BDD et actualisation des commentaires
         if (comment != '' && photoId != undefined) {
             ajaxRequest('POST', 'php/request.php/comments/', () => {
+
                 ajaxRequest('GET', 'php/request.php/comments/', loadComments, 'id=' + photoId);
+                new NotifyNotification('Votre commentaire a été ajouté', "Merci d'avoir pris le temps de laisser un commentaire <3", 'ok');
+            
             }, 'id=' + photoId + '&comment=' + comment);
         }
 
