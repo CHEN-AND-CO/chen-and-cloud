@@ -19,7 +19,7 @@ section
     width: 100%;
 }
 
-#chat
+aside#chat
 {
     width: 100vw;
 
@@ -27,14 +27,14 @@ section
     transition: transform 0.3s ease-in;
 }
 
-#chat h2
+aside#chat h2
 {
     font-size: 4vw;
     transform: translateX(-50%);
     transition: transform 0.3s ease-in;
 }
 
-#chat h2::before
+aside#chat h2::before
 {
     content: "<";
     margin-right: 1em;

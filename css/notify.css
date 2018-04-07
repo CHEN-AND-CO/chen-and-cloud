@@ -4,6 +4,8 @@
     position: fixed;
     top: 10vh;
     left: 2vw;
+
+    z-index: 99999;
 }
 
 .notification
